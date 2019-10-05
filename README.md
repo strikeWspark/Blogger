@@ -1,2 +1,2 @@
 # Blogger
-An application for blogging.
+An  android application for blogging.
