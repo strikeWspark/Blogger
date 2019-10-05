@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blog"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/blg_imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginBottom="30dp"
+             />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/blg_usernameID_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:padding="4dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/blg_usernameID_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/background_dark"
+                android:hint="@string/blg_username_hint"
+                android:inputType="text"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/blg_passwordID_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:padding="4dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/blg_passwordID_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/background_dark"
+                android:hint="@string/blg_password_hint"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/blg_relative_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/blg_next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="@string/blg_next"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/blg_cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@id/blg_next_button"
+                android:backgroundTint="@color/common_google_signin_btn_text_light_disabled"
+                android:text="@string/blg_cancel"
+                android:textAppearance="@color/common_google_signin_btn_text_dark_default"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
+
