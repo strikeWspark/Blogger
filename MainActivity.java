@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private TextInputLayout passwordInputlayout;
     private TextInputEditText passwordEditText;
     private MaterialButton nextbutton;
+    private MaterialButton signupButton;
     private ProgressDialog signProgress;
 
     @Override
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         passwordInputlayout = (TextInputLayout) findViewById(R.id.blg_passwordID_input);
         passwordEditText = (TextInputEditText)findViewById(R.id.blg_passwordID_edit);
         nextbutton = (MaterialButton) findViewById(R.id.blg_next_button);
+        signupButton = (MaterialButton) findViewById(R.id.blg_signup_login);
 
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
                     signProgress.setMessage("Signing In");
                     signProgress.show();
+                    signProgress.setCancelable(false);
                     String email = usernameEditText.getText().toString();
                     String pwd = passwordEditText.getText().toString();
 
@@ -87,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,CreateAccount.class));
+            }
+        });
+
 
 
 

@@ -2,13 +2,16 @@ package com.example.r.blogger.Data;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.r.blogger.Activities.FullPostActivity;
 import com.example.r.blogger.Model.Blog;
 import com.example.r.blogger.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 import java.util.List;
@@ -54,6 +57,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         imageUrl = blog.getImage();
 
+        Picasso.with(context).load(imageUrl).into(holder.image);
+
     }
 
     @Override
@@ -70,7 +75,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
 
 
-        public ViewHolder(@NonNull View view,Context ctx) {
+        public ViewHolder(@NonNull View view,final Context ctx) {
             super(view);
             context = ctx;
 
@@ -84,6 +89,12 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
                 @Override
                 public void onClick(View v) {
                     //we can go to next activity
+                    Blog blog = blogList.get(getAdapterPosition());
+
+                    Intent intent = new Intent(context, FullPostActivity.class);
+                    intent.putExtra("blog",blog);
+                    ctx.startActivity(intent);
+
                 }
             });
 

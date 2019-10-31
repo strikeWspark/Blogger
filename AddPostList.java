@@ -3,6 +3,8 @@ package com.example.r.blogger.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +15,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.r.blogger.Model.Blog;
 import com.example.r.blogger.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,6 +49,7 @@ public class AddPostList extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private ProgressDialog mProgress;
     private Uri mimageUri;
+    private Toolbar toolbar_addpost;
     private static final int GALLERY_CODE = 1;
 
     @Override
@@ -56,6 +61,7 @@ public class AddPostList extends AppCompatActivity {
         mProgress = new ProgressDialog(this);
 
 
+
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mStorage = FirebaseStorage.getInstance().getReference();
@@ -63,7 +69,7 @@ public class AddPostList extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mPostDatabase = mDatabase.getReference().child("MBlog");
         Toast.makeText(getApplicationContext(),"Database referenced",Toast.LENGTH_LONG).show();
-        mPostDatabase.setValue("dryfire");
+
 
 
 
@@ -72,6 +78,16 @@ public class AddPostList extends AppCompatActivity {
         title_text = (TextInputEditText) findViewById(R.id.blg_add_post_text);
         post_desc = (EditText) findViewById(R.id.blg_post_desc);
         uploadbutton = (MaterialButton) findViewById(R.id.blg_upload_button);
+        toolbar_addpost = (Toolbar) findViewById(R.id.blg_tool_addpost);
+        setSupportActionBar(toolbar_addpost);
+
+        toolbar_addpost.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AddPostList.this,PostListActivity.class));
+                finish();
+            }
+        });
 
         mPostImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +125,7 @@ public class AddPostList extends AppCompatActivity {
 
         mProgress.setMessage("Posting to Blog...");
         mProgress.show();
+        mProgress.setCancelable(false);
 
         final String titleVal = title_text.getText().toString().trim();
         final String descVal = post_desc.getText().toString().trim();
@@ -123,26 +140,31 @@ public class AddPostList extends AppCompatActivity {
             //Start the uploading...
             Log.d("posting","to blog");
 
-            StorageReference filepath = mStorage.child("MBlog_images").child(mimageUri.getLastPathSegment());
+            final StorageReference filepath = mStorage.child("MBlog_images").child(mimageUri.getLastPathSegment());
             Log.d("third","line");
             filepath.putFile(mimageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Task<Uri> downloadUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-
+                    String post_image_url = taskSnapshot.getUploadSessionUri().toString();
+                    String sub_post_url = post_image_url.substring(0,post_image_url.indexOf("&uploadType"));
+                    String constant_url = "&alt=media";
+                    String final_image_url = sub_post_url + constant_url;
                     DatabaseReference newPost = mPostDatabase.push();
 
                    Map<String,String> dataToSave = new HashMap<>();
                     dataToSave.put("title",titleVal);
                     dataToSave.put("description",descVal);
+                    dataToSave.put("image", final_image_url);
                     dataToSave.put("timeStamp",String.valueOf(java.lang.System.currentTimeMillis()));
-                    dataToSave.put("userID",mUser.getEmail());
+                    dataToSave.put("userID",mUser.getUid());
+                    dataToSave.put("username",mUser.getEmail());
 
                     //newPost.child("title").setValue(titleVal);
                     //newPost.child("description").setValue(descVal);
 
-                    newPost.setValue(dataToSave);
+
+                    mPostDatabase.child(String.valueOf(java.lang.System.currentTimeMillis())).setValue(dataToSave);
 
                     mProgress.dismiss();
 
@@ -153,6 +175,7 @@ public class AddPostList extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
 
                 }
             });

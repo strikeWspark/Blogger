@@ -66,7 +66,10 @@ public class PostListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        add_post = (FloatingActionButton) findViewById(R.id.blg_add_post);
+
+
+
+        add_post =  (FloatingActionButton) findViewById(R.id.blg_add_post);
         add_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,15 +118,15 @@ public class PostListActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                /*Blog blog = dataSnapshot.getValue(Blog.class);
+                Blog blog = dataSnapshot.getValue(Blog.class);
 
                 blogList.add(blog);
-
-             //   Collections.reverse(blogList);
-                blogRecyclerAdapter = new BlogRecyclerAdapter(PostListActivity.this,blogList);
+    //TODO: Ask this question to sir
+               //Collections.reverse(blogList);
+               blogRecyclerAdapter = new BlogRecyclerAdapter(PostListActivity.this,blogList);
 
                 recyclerView.setAdapter(blogRecyclerAdapter);
-                blogRecyclerAdapter.notifyDataSetChanged();*/
+                blogRecyclerAdapter.notifyDataSetChanged();
             }
 
             @Override

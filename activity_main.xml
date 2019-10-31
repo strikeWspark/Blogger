@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/blog"
+    android:background="@drawable/login_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -22,7 +23,15 @@
             android:layout_marginLeft="100dp"
             android:layout_marginTop="65dp"
             android:layout_marginBottom="30dp"
+            android:src="@drawable/blg_app_icon"
              />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="25sp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -30,7 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:padding="4dp">
+            android:padding="4dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -41,6 +52,7 @@
                 android:textColor="@android:color/background_dark"
                 android:hint="@string/blg_username_hint"
                 android:inputType="text"
+
                 android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -51,7 +63,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:padding="4dp">
+            android:padding="4dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/blg_passwordID_edit"
@@ -75,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="12dp"
-                android:backgroundTint="@android:color/holo_blue_light"
                 android:text="@string/blg_next"
+                android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
                 android:textColor="@color/colorPrimaryDark" />
 
@@ -88,15 +102,30 @@
                 android:layout_toStartOf="@id/blg_next_button"
                 android:backgroundTint="@color/common_google_signin_btn_text_light_disabled"
                 android:text="@string/blg_cancel"
-                android:textAppearance="@color/common_google_signin_btn_text_dark_default"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
                 android:textSize="14sp" />
 
 
         </RelativeLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/blg_signup_login"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="@string/blg_signup"
+            android:textStyle="bold"
+            android:layout_gravity="center|bottom"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="75dp"
+            app:cornerRadius="26dp"
+            app:icon="@drawable/signup_icon"
+            android:textAlignment="center"
+            android:background="@drawable/signup_button"/>
+
 
     </LinearLayout>
 
 
-</FrameLayout>
+</ScrollView>
 

@@ -12,13 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.AddPostList"></activity>
-        <activity android:name=".Activities.PostListActivity" />
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.FullPostActivity"></activity>
+        <activity android:name=".Activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activities.CreateAccount"></activity>
+        <activity android:name=".Activities.PostListActivity" />
+        <activity android:name=".Activities.MainActivity">
+
         </activity>
     </application>
 

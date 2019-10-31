@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/blg_terms_full"
+        android:title="@string/blg_terms_condition"
+        />
+
+    <item
+        android:title="@string/blg_about_us"
+        android:id="@+id/blg_about_full"
+        />
+
+</menu>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Blogger</string>
+    <string name="blg_username_hint">Username</string>
+    <string name="blg_password_hint">Password</string>
+    <string name="blg_next">Next</string>
+    <string name="blg_cancel">Cancel</string>
+    <string name="blg_error_password">Password msut contain atleast 8 characters</string>
+    <string name="upload">Upload</string>
+    <string name="blg_desc_tag_text">Description</string>
+    <string name="blg_post_title">Title</string>
+    <string name="blg_add_post">Add Post</string>
+    <string name="blg_signout">Signout</string>
+    <string name="blg_setting">Setting</string>
+    <string name="blg_hint_name">Name</string>
+    <string name="blg_signup">Sign up</string>
+    <string name="blg_male_radio">Male</string>
+    <string name="blg_female_radio">Female</string>
+    <string name="blg_others_radio">Others</string>
+    <string name="blg_terms_condition">Terms and Conditions</string>
+    <string name="blg_about_us">About Us</string>
+</resources>

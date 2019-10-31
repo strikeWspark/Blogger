@@ -1,8 +1,9 @@
 package com.example.r.blogger.Model;
 
 
+import java.io.Serializable;
 
-public class Blog {
+public class Blog implements Serializable {
 
     public String title;
     public String description;
@@ -64,10 +65,5 @@ public class Blog {
         this.userID = userID;
     }
 
-   /* @NonNull
-    @Override
-    public String toString() {
-        return "Blog";
 
-    }*/
 }

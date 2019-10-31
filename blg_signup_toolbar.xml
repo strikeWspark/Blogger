@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="@string/blg_terms_condition"
+        android:id="@+id/blg_terms"
+        app:showAsAction="never"/>
+
+    <item
+        android:title="@string/blg_about_us"
+        android:id="@+id/blg_about"
+        app:showAsAction="never"/>
+
+
+
+</menu>
